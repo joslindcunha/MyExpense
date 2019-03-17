@@ -72,7 +72,7 @@ public class loginpage extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(loginpage.this, "Enter valid username and password", Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }
                 }
 
@@ -111,9 +111,10 @@ public class loginpage extends AppCompatActivity {
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Log.i("TAG","error "+e.toString());
+            return null;
         }
-        return null;
+
     }
 }
