@@ -4,14 +4,13 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class viewexpense extends AppCompatActivity {
+public class viewExpense extends AppCompatActivity {
+
     ListView listView;
     ArrayList<HashMap<String, String>> detaillist;
 
@@ -26,7 +25,7 @@ public class viewexpense extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main6);
+        setContentView(R.layout.activity_view_expense);
 
         detaillist = new ArrayList<HashMap<String, String>>();
         dbManager=new DBManager(this);
@@ -34,7 +33,8 @@ public class viewexpense extends AppCompatActivity {
 
         cursor=dbManager.get_expenses();
         listView=findViewById(R.id.listview);
-
+//        HashMap<String, String> detaillist1 = new HashMap<String, String>();
+        ArrayList<ExpenseModel> list = new ArrayList<>();
 
         while (cursor.moveToNext()){
             String exp_name=cursor.getString(cursor.getColumnIndex("name"));
@@ -43,18 +43,30 @@ public class viewexpense extends AppCompatActivity {
             String exp_amount=cursor.getString(cursor.getColumnIndex("amount"));
             Log.i("TAG","details "+exp_name+exp_date+exp_amount);
 
-            HashMap<String, String> detaillist1 = new HashMap<String, String>();
-            detaillist1.put(tag1, exp_name);
-           // detaillist1.put(tag2,exp_type);
-            detaillist1.put(tag3,exp_date);
-            detaillist1.put(tag4,exp_amount);
-            detaillist.add(detaillist1);
+
+           list.add(new ExpenseModel(exp_date,exp_amount,exp_name));
 
         }
-        ListAdapter adapter1;
-        adapter1 = new SimpleAdapter(viewexpense.this, detaillist, R.layout.expense_layout,
-                new String[]{tag1,tag3,tag4}, new int[]{R.id.name,  R.id.date,R.id.amount});
-        listView.setAdapter(adapter1);
+
+
+
+
+//        list.add(new ExpenseModel("25-4-2019","10","aaaa"));
+//        list.add(new ExpenseModel("22-2-2019","70","ag"));
+//        list.add(new ExpenseModel("23-3-2019","18","bb"));
+
+        ExpenseAdapter adapter=new ExpenseAdapter(this,list);
+        listView.setAdapter(adapter);
+
+
+
+//        ListAdapter adapter1;
+//        adapter1 = new SimpleAdapter(viewExpense.this, detaillist, R.layout.expense_item,
+//                new String[]{tag1,tag3,tag4}, new int[]{R.id.name,  R.id.date,R.id.amount});
+//        listView.setAdapter(adapter1);
+//
+
+
         cursor.close();
 
 

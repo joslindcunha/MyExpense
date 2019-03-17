@@ -28,7 +28,7 @@ public class expensemanager extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(expensemanager.this,viewexpense.class);
+                Intent intent=new Intent(expensemanager.this,viewExpense.class);
                 startActivity(intent);
             }
         });

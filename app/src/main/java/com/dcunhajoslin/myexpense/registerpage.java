@@ -1,6 +1,5 @@
 package com.dcunhajoslin.myexpense;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +25,7 @@ public class registerpage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registeractivity);
+        setContentView(R.layout.activity_register);
         //constructor
         mydb=new DBManager(this);
         mydb.open();
