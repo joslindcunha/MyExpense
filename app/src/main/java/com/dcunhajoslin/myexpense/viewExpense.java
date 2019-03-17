@@ -1,5 +1,6 @@
 package com.dcunhajoslin.myexpense;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,17 +26,24 @@ public class viewExpense extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_expense);
 
-        detaillist = new ArrayList<HashMap<String, String>>();
+       // detaillist = new ArrayList<HashMap<String, String>>();
         dbManager=new DBManager(this);
         dbManager.open();
 
         cursor=dbManager.get_expenses();
         listView=findViewById(R.id.listview);
 //        HashMap<String, String> detaillist1 = new HashMap<String, String>();
-        ArrayList<ExpenseModel> list = new ArrayList<>();
 
+        if(cursor.getCount()==0){
+
+            setContentView(R.layout.activity_error);
+//            Intent intent=new Intent(viewExpense.this,Error.class);
+//            startActivity(intent);
+        }
+        else {
+            setContentView(R.layout.activity_view_expense);
+            ArrayList<ExpenseModel> list = new ArrayList<>();
         while (cursor.moveToNext()){
             String exp_name=cursor.getString(cursor.getColumnIndex("name"));
          //   String exp_type=cursor.getString(cursor.getColumnIndex("type"));
@@ -48,15 +56,13 @@ public class viewExpense extends AppCompatActivity {
 
         }
 
+//        if(list.size()!=0) {
+
+            ExpenseAdapter adapter = new ExpenseAdapter(this, list);
+            listView.setAdapter(adapter);
+        }
 
 
-
-//        list.add(new ExpenseModel("25-4-2019","10","aaaa"));
-//        list.add(new ExpenseModel("22-2-2019","70","ag"));
-//        list.add(new ExpenseModel("23-3-2019","18","bb"));
-
-        ExpenseAdapter adapter=new ExpenseAdapter(this,list);
-        listView.setAdapter(adapter);
 
 
 
