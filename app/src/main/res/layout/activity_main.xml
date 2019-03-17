@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/background"
+    tools:context="com.dcunhajoslin.myexpense.expensemanager">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:layout_marginTop="95dp"
+        android:layout_marginLeft="25dp"
+
+        android:id="@+id/one"        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_below="@+id/one"
+        android:background="@drawable/curvy"
+        android:textColor="#FDFCFC"
+        android:textStyle="bold"
+        android:layout_marginTop="65dp"
+        android:text="Add Todays Expense"/>
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/view"
+    android:layout_below="@+id/button"
+    android:layout_marginTop="40dp"
+    android:text="View Expenses"
+    android:textColor="#fff"
+    android:background="@drawable/curvy"
+    android:textStyle="bold"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="40dp"
+        android:text="LOGOUT"
+        android:textColor="#fff"
+        android:background="@drawable/curvy"
+        android:textStyle="bold"/>
+
+</RelativeLayout>
