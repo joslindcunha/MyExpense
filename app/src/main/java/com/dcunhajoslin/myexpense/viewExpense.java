@@ -42,7 +42,6 @@ public class viewExpense extends AppCompatActivity {
         }
         else {
             setContentView(R.layout.activity_view_expense);
-
             listView=findViewById(R.id.listview);
             ArrayList<ExpenseModel> list = new ArrayList<>();
         while (cursor.moveToNext()){

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class expensemanager extends AppCompatActivity {
-    Button button,button2,logoutbutton;
+    Button button,button2,logoutbutton,expenditure;
     TextView tv;
 
 
@@ -22,6 +22,7 @@ public class expensemanager extends AppCompatActivity {
         String name=sp.getString("name",null);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.view);
+        expenditure=findViewById(R.id.expenditure);
         logoutbutton=findViewById(R.id.logout);
         tv=findViewById(R.id.one);
         tv.setText("Hello "+name);
@@ -39,6 +40,14 @@ public class expensemanager extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        expenditure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(expensemanager.this,Expenditure.class);
+                startActivity(intent);
+            }
+        });
+
         logoutbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

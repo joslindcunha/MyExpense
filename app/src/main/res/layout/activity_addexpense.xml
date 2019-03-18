@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:scrollbars="vertical" >
+    android:scrollbars="vertical">
+
     <RelativeLayout
 
         android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:layout_height="match_parent"
+
 
         android:background="#EFF6F7"
+
         android:overScrollMode="always"
 
         tools:context=".addexpense">
 
 
-        <DatePicker
-            android:id="@+id/cal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+        <!--<DatePicker-->
+        <!--android:id="@+id/cal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--&gt;-->
 
-        </DatePicker>
+        <!--</DatePicker>-->
         <EditText
+            android:id="@+id/Birthday"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cal"
-            android:hint="Expense Name"
-    android:maxLines="1"
+            android:layout_marginTop="80dp"
+            android:clickable="true"
+            android:editable="false"
+            android:hint="Select Date" />
+
+        <EditText
             android:id="@+id/name"
-            />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Amount"
-            android:layout_below="@id/name"
+            android:layout_below="@+id/Birthday"
+            android:hint="Expense Name"
+            android:maxLines="1" />
+
+        <EditText
             android:id="@+id/amt"
-            android:maxLines="1"
-            android:inputType="number"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:hint="Amount"
+            android:inputType="number"
+            android:maxLines="1" />
 
         <Button
             android:id="@+id/enter"
@@ -50,15 +61,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/amt"
             android:background="@drawable/curvy"
-            android:shadowColor="#F8BDD0"
+            android:fontFamily="serif-monospace"
 
             android:gravity="center"
-            android:fontFamily="serif-monospace"
+            android:shadowColor="#F8BDD0"
 
             android:text="Add To Expense"
             android:textColor="#F8F7F7"
             android:textStyle="bold" />
-
 
 
     </RelativeLayout>
