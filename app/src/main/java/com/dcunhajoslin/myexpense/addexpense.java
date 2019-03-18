@@ -19,7 +19,7 @@ public class addexpense extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addexpenseactivity);
+        setContentView(R.layout.activity_addexpense);
         mydb=new DBManager(this);
         mydb.open();
 

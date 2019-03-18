@@ -26,7 +26,7 @@ public class loginpage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loginactivity);
+        setContentView(R.layout.activity_login);
         button = findViewById(R.id.login);
         textView = findViewById(R.id.signUp);
         username=findViewById(R.id.user);
@@ -72,7 +72,7 @@ public class loginpage extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(loginpage.this, "Enter valid username and password", Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }
                 }
 
@@ -111,9 +111,10 @@ public class loginpage extends AppCompatActivity {
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Log.i("TAG","error "+e.toString());
+            return null;
         }
-        return null;
+
     }
 }
