@@ -87,5 +87,12 @@ public class DBManager {
         return database.rawQuery("select * from expenses where email=\""+mail+"\"",new String[]{});
     }
 
+    public Cursor get_todays_expenses(String today){
+        SharedPreferences sp=context.getSharedPreferences("UserInfo",Context.MODE_PRIVATE);
+        ContentValues contentValues=new ContentValues();
+        String mail=sp.getString("email",null);
+        return database.rawQuery("select * from expenses where email=\""+mail+"\" and date=\""+today+"\"",new String[]{});
+    }
+
 
 }

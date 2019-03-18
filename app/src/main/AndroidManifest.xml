@@ -10,17 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".viewExpense" />
-        <activity android:name=".startpage">
+        <activity android:name=".startpage"></activity>
+        <activity android:name=".loginpage" />
+        <activity android:name=".registerpage" />
+        <activity android:name=".expensemanager" />
+        <activity android:name=".addexpense" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginpage" />
-        <activity android:name=".registerpage" />
-        <activity android:name=".expensemanager" />
-        <activity android:name=".addexpense" />
+        <activity android:name=".Expenditure"></activity>
     </application>
 
 </manifest>
