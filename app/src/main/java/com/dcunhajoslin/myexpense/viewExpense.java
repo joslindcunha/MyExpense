@@ -32,7 +32,6 @@ public class viewExpense extends AppCompatActivity {
         dbManager.open();
 
         cursor=dbManager.get_expenses();
-        listView=findViewById(R.id.listview);
 //        HashMap<String, String> detaillist1 = new HashMap<String, String>();
 
         if(cursor.getCount()==0){
@@ -43,6 +42,8 @@ public class viewExpense extends AppCompatActivity {
         }
         else {
             setContentView(R.layout.activity_view_expense);
+
+            listView=findViewById(R.id.listview);
             ArrayList<ExpenseModel> list = new ArrayList<>();
         while (cursor.moveToNext()){
             String exp_name=cursor.getString(cursor.getColumnIndex("name"));
@@ -56,7 +57,7 @@ public class viewExpense extends AppCompatActivity {
 
         }
 
-//        if(list.size()!=0) {
+
 
             ExpenseAdapter adapter = new ExpenseAdapter(this, list);
             listView.setAdapter(adapter);
