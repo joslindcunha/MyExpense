@@ -53,6 +53,11 @@ public class expensemanager extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences sp=getSharedPreferences("UserInfo",MODE_PRIVATE);
                 sp.edit().clear().commit();
+
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putBoolean("firstRun",false);
+                editor.commit();
+
                 finish();
                 Toast.makeText(expensemanager.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(expensemanager.this,loginpage.class);
