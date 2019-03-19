@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by AbhiAndroid
  */
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppIntro {
 
     Handler handler;
     @Override
