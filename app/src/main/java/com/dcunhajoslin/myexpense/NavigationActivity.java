@@ -1,5 +1,6 @@
 package com.dcunhajoslin.myexpense;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -48,8 +49,8 @@ public class NavigationActivity extends AppCompatActivity {
         bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
 //
 //// Force to tint the drawable (useful for font with icon for example)
-        bottomNavigation.setForceTint(true);
-//
+//        bottomNavigation.setForceTint(true);
+////
 //        // Display color under navigation bar (API 21+)
 ////// Don't forget these lines in your style-v21
 // <item name="android:windowTranslucentNavigation">true</item>
@@ -62,13 +63,13 @@ public class NavigationActivity extends AppCompatActivity {
 //        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
 //
 //// Use colored navigation with circle reveal effect
-//        bottomNavigation.setColored(true);
+        bottomNavigation.setColored(true);
 //
 //// Set current item programmatically
-//        bottomNavigation.setCurrentItem(1);
+        bottomNavigation.setCurrentItem(0);
 //
 //// Customize notification (title, background, typeface)
-//        bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
+        bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
 //
 //// Add or remove notification for each item
 //        bottomNavigation.setNotification("1", 3);
@@ -84,19 +85,43 @@ public class NavigationActivity extends AppCompatActivity {
 //        bottomNavigation.enableItemAtPosition(2);
 //        bottomNavigation.disableItemAtPosition(2);
 //        bottomNavigation.setItemDisableColor(Color.parseColor("#3A000000"));
-//
+////
 //// Set listeners
-//        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-//            @Override
-//            public boolean onTabSelected(int position, boolean wasSelected) {
-//                // Do something cool here...
-//                return true;
-//            }
-//        });
-//        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-//            @Override public void onPositionChange(int y) {
-//                // Manage the new y position
-//            }
-//        });
+
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                // Do something cool here...
+                Intent intent;
+                switch (position) {
+                    case 0:
+                        intent = new Intent(NavigationActivity.this, addexpense.class);
+
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(NavigationActivity.this, Expenditure.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(NavigationActivity.this, viewExpense.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(NavigationActivity.this, viewExpense.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
+
+                return true;
+            }
+        });
+        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
+            @Override public void onPositionChange(int y) {
+                // Manage the new y position
+            }
+        });
     }
 }
