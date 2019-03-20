@@ -38,7 +38,9 @@ public class NavigationActivity extends AppCompatActivity {
 //// Change colors
 //        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
 //        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
-//
+
+
+
 //// Force to tint the drawable (useful for font with icon for example)
 //        bottomNavigation.setForceTint(true);
 //
