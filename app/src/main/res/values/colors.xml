@@ -25,4 +25,9 @@
     <!-- ./ 4th Gradient color -->
      <color name="black">#000000</color>
 
+    <color name="color_tab_1">#E2AEC4</color>
+    <color name="color_tab_2">#E7CFDB</color>
+    <color name="color_tab_3">#9178AA</color>
+    <color name="color_tab_4">#E09D9D</color>
+
 </resources>

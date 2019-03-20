@@ -40,6 +40,7 @@ public class loginpage extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String uname=username.getText().toString();
                 String pwd=password.getText().toString();
                 if(username.getText().toString().equals(""))
@@ -65,7 +66,7 @@ public class loginpage extends AppCompatActivity {
                     editor.putString("email", uname);
                     editor.apply();
 
-                    Intent intent = new Intent(loginpage.this, expensemanager.class);
+                    Intent intent = new Intent(loginpage.this, NavigationActivity.class);
 
                     startActivity(intent);
                     finish();

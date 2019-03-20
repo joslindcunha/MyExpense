@@ -15,39 +15,47 @@ public class NavigationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        String tab_1="Add Expense";
+        String tab_2="Today's Expenditure";
+        String tab_3="View Expense";
+        String tab_4="Logout";
 
-//        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
-//        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_maps_place, R.color.color_tab_1);
-//        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_maps_local_bar, R.color.color_tab_2);
-//        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_maps_local_restaurant, R.color.color_tab_3);
-//
+
+
+        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(tab_1, R.drawable.ic_maps_add);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(tab_2, R.drawable.ic_maps_today);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(tab_3, R.drawable.ic_maps_view);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(tab_4, R.drawable.ic_maps_profile);
+
 //// Add items
-//        bottomNavigation.addItem(item1);
-//        bottomNavigation.addItem(item2);
-//        bottomNavigation.addItem(item3);
+        bottomNavigation.addItem(item1);
+        bottomNavigation.addItem(item2);
+        bottomNavigation.addItem(item3);
+        bottomNavigation.addItem(item4);
 //
 //// Set background color
-//        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
+        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
 //
 //// Disable the translation inside the CoordinatorLayout
-//        bottomNavigation.setBehaviorTranslationEnabled(false);
-//
+        bottomNavigation.setBehaviorTranslationEnabled(false);
+
 //// Enable the translation of the FloatingActionButton
 //        bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
 //
 //// Change colors
-//        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
-//        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
+        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
+        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
 //
 //// Force to tint the drawable (useful for font with icon for example)
-//        bottomNavigation.setForceTint(true);
+        bottomNavigation.setForceTint(true);
 //
 //        // Display color under navigation bar (API 21+)
-//// Don't forget these lines in your style-v21
-//// <item name="android:windowTranslucentNavigation">true</item>
-//// <item name="android:fitsSystemWindows">true</item>
-//        bottomNavigation.setTranslucentNavigationEnabled(true);
-//
+////// Don't forget these lines in your style-v21
+// <item name="android:windowTranslucentNavigation">true</item>
+// <item name="android:fitsSystemWindows">true</item>
+        bottomNavigation.setTranslucentNavigationEnabled(true);
+
 //// Manage titles
 //        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
 //        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
