@@ -123,7 +123,7 @@ public class addexpense extends Fragment {
                     Toast.makeText(getActivity(), "Data Entered", Toast.LENGTH_SHORT).show();
 
 
-                    startActivity(new Intent(getActivity(), expensemanager.class));
+                    startActivity(new Intent(getActivity(), NavigationActivity.class));
                    // finish();
 
 

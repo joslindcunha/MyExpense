@@ -87,7 +87,7 @@ public class registerpage extends AppCompatActivity {
                         editor.putString("email", email.getText().toString());
                         editor.apply();
                         Toast.makeText(registerpage.this, "You have successfully registered", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(registerpage.this, expensemanager.class);
+                        Intent intent = new Intent(registerpage.this, NavigationActivity.class);
                         startActivity(intent);
                         finish();
 

@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -103,14 +104,11 @@ public class NavigationActivity extends AppCompatActivity {
                     case 0:
                         fragment = new addexpense();
                         break;
-//                    case 1:
-//                        NotificationFragment notificationFragment = new NotificationFragment();
-//                        Bundle notifArgs = new Bundle();
-//                        // Put observable int (That why ObservableInteger implements Serializable)
-//                        notifArgs.putSerializable(NotificationFragment.PARAM, notificationData);
-//                        notificationFragment.setArguments(notifArgs);
-//                        fragment = notificationFragment;
-//                        break;
+                    case 1:
+                        Log.i("TAG","2nd one");
+
+                        fragment = new viewExpense();
+                        break;
 //                    case 2:
 //                        ContactsFragment contactFragment = new ContactsFragment();
 //                        Bundle contactsArgs = new Bundle();
