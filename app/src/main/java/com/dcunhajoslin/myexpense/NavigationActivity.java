@@ -2,6 +2,7 @@ package com.dcunhajoslin.myexpense;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,15 +12,19 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 
 public class NavigationActivity extends AppCompatActivity {
+    Fragment fragment=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+
         String tab_1="Add Expense";
         String tab_2="Today's Expenditure";
         String tab_3="View Expense";
         String tab_4="Logout";
+        fragment=new addexpense();
+        loadFragment(fragment);
 
 
 
@@ -92,30 +97,35 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
                 // Do something cool here...
-                Intent intent;
+
+
                 switch (position) {
                     case 0:
-                        intent = new Intent(NavigationActivity.this, addexpense.class);
-
-                        startActivity(intent);
+                        fragment = new addexpense();
                         break;
-                    case 1:
-                        intent = new Intent(NavigationActivity.this, Expenditure.class);
-                        startActivity(intent);
-                        break;
-                    case 2:
-                        intent = new Intent(NavigationActivity.this, viewExpense.class);
-                        startActivity(intent);
-                        break;
-                    case 3:
-                        intent = new Intent(NavigationActivity.this, viewExpense.class);
-                        startActivity(intent);
-                        break;
+//                    case 1:
+//                        NotificationFragment notificationFragment = new NotificationFragment();
+//                        Bundle notifArgs = new Bundle();
+//                        // Put observable int (That why ObservableInteger implements Serializable)
+//                        notifArgs.putSerializable(NotificationFragment.PARAM, notificationData);
+//                        notificationFragment.setArguments(notifArgs);
+//                        fragment = notificationFragment;
+//                        break;
+//                    case 2:
+//                        ContactsFragment contactFragment = new ContactsFragment();
+//                        Bundle contactsArgs = new Bundle();
+//                        // Put observable int (That why ObservableInteger implements Serializable)
+//                        contactsArgs.putSerializable(ContactsFragment.PARAM, contactData);
+//                        contactFragment.setArguments(contactsArgs);
+//                        fragment = contactFragment;
+//                        break;
+//                    case 3:
+//                        fragment = new SettingsFragment();
+//                        break;
                     default:
                         break;
                 }
-
-                return true;
+                return loadFragment(fragment);
             }
         });
         bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
@@ -123,5 +133,17 @@ public class NavigationActivity extends AppCompatActivity {
                 // Manage the new y position
             }
         });
+
+    }
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 }
