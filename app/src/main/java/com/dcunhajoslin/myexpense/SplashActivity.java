@@ -34,14 +34,24 @@ public class SplashActivity extends Activity {
                     finish();
                 }
                 else
-                {
-                    Intent intent=new Intent(SplashActivity.this,loginpage.class);
+                {Intent intent;
+                    if(sp.getString("name",null)!=null){
+                        intent=new Intent(SplashActivity.this,NavigationActivity.class);
+                    }
+                    else {
+                        intent=new Intent(SplashActivity.this,loginpage.class);
+                    }
+
+
+
                     startActivity(intent);
                     finish();
                 }
 
             }
         },2000);
+
+
 
     }
 }

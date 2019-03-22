@@ -15,8 +15,12 @@
     </style>
 
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@color/black</item>
+        <item name="background">@color/color_tab_3</item>
         <item name="titleTextStyle">@style/MyActionBarTitle</item>
+        <item name="actionOverflowButtonStyle">@style/DotsDarkTheme</item>
+    </style>
+
+    <style name="DotsDarkTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
         <item name="android:tint">@color/colorAccent</item>
     </style>
 
