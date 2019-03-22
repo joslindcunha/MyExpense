@@ -3,27 +3,40 @@ package com.dcunhajoslin.myexpense;
 import android.database.Cursor;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Expenditure extends AppCompatActivity {
+public class Expenditure extends Fragment {
     DBManager dbManager;
     Cursor cursor;
-    TextView expenditure;
+    TextView expenditure,expname,expamount;
     ListView listView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenditure);
-        expenditure=findViewById(R.id.today);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_expenditure, container, false);
+    }
 
-        listView=findViewById(R.id.listview_today);
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+        View v = getView();
+        expenditure=v.findViewById(R.id.today);
+
+        listView=v.findViewById(R.id.listview_today);
+        expname=v.findViewById(R.id.expname);
+        expamount=v.findViewById(R.id.expamount);
         ArrayList<ExpenseModel> list = new ArrayList<>();
 
         Date c = null;
@@ -37,7 +50,7 @@ public class Expenditure extends AppCompatActivity {
             Log.i("TAG","formatted date"+formattedDate);
 
 
-            dbManager=new DBManager(this);
+            dbManager=new DBManager(getContext());
             dbManager.open();
 
             cursor=dbManager.get_todays_expenses(formattedDate);
@@ -57,7 +70,7 @@ public class Expenditure extends AppCompatActivity {
 
 
                 }
-                ExpenditureAdapter adapter = new ExpenditureAdapter(this, list);
+                ExpenditureAdapter adapter = new ExpenditureAdapter(getContext(), list);
                 listView.setAdapter(adapter);
 
                 Log.i("TAG","total per day is "+count);
@@ -65,6 +78,9 @@ public class Expenditure extends AppCompatActivity {
 
             }
             else{
+                expname.setVisibility(View.INVISIBLE);
+                expamount.setVisibility(View.INVISIBLE);
+
                 expenditure.setText("You have no Expense Today" );
 
             }

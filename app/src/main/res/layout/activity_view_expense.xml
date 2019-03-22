@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".viewExpense"
     >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_head"
+        android:text="YOUR EXPENSES"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+
+        />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
+
+        android:layout_below="@id/text_head"
         android:id="@+id/listview"/>
     <TextView
         android:layout_width="wrap_content"
@@ -17,6 +31,7 @@
         android:id="@+id/text_empty"
         android:text="No expense has been added "
         android:visibility="invisible"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         />
