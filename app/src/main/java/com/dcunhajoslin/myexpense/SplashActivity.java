@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-/**
- * Created by AbhiAndroid
- */
+
 
 public class SplashActivity extends Activity {
 
@@ -41,7 +39,7 @@ public class SplashActivity extends Activity {
                 }
 
             }
-        },2000);
+        },3000);
 
     }
 }
