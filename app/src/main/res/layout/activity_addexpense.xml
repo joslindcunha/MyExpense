@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,28 +12,32 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
-        android:background="#EFF6F7"
-
+        android:background="@drawable/pink_back"
         android:overScrollMode="always"
-
         tools:context=".addexpense">
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_centerVertical="true"
+        app:cardBackgroundColor="#70ffffff">
 
 
-        <!--<DatePicker-->
-        <!--android:id="@+id/cal"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--&gt;-->
 
-        <!--</DatePicker>-->
-        <EditText
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+    <EditText
             android:id="@+id/Birthday"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:clickable="true"
             android:editable="false"
             android:hint="Select Date" />
@@ -43,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/Birthday"
             android:hint="Expense Name"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:maxLines="1" />
 
         <EditText
@@ -51,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
             android:hint="Amount"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:inputType="number"
             android:maxLines="1" />
 
@@ -62,6 +69,7 @@
             android:layout_below="@id/amt"
             android:background="@drawable/curvy"
             android:fontFamily="serif-monospace"
+            android:layout_margin="@dimen/activity_horizontal_margin"
 
             android:gravity="center"
             android:shadowColor="#F8BDD0"
@@ -70,6 +78,7 @@
             android:textColor="#F8F7F7"
             android:textStyle="bold" />
 
-
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
     </RelativeLayout>
 </ScrollView>
