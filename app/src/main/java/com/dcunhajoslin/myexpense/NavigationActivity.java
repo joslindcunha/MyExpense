@@ -1,12 +1,17 @@
 package com.dcunhajoslin.myexpense;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -15,31 +20,35 @@ import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 public class NavigationActivity extends AppCompatActivity {
     Fragment fragment=null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-        String tab_1="Add Expense";
-        String tab_2="Today's Expenditure";
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
+        String tab_2="Add Expense";
+        String tab_1="Today's Expenditure";
         String tab_3="View Expense";
-        String tab_4="Logout";
-        fragment=new addexpense();
+        //String tab_4="Logout";
+        fragment=new Expenditure();
         loadFragment(fragment);
 
 
 
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(tab_1, R.drawable.ic_maps_add);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(tab_2, R.drawable.ic_maps_today);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(tab_2, R.drawable.ic_maps_add);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(tab_1, R.drawable.ic_maps_today);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(tab_3, R.drawable.ic_maps_view);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(tab_4, R.drawable.ic_maps_profile);
+        //AHBottomNavigationItem item4 = new AHBottomNavigationItem(tab_4, R.drawable.ic_maps_profile);
 
 //// Add items
         bottomNavigation.addItem(item1);
         bottomNavigation.addItem(item2);
         bottomNavigation.addItem(item3);
-        bottomNavigation.addItem(item4);
+       // bottomNavigation.addItem(item4);
 //
 //// Set background color
         bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
@@ -102,21 +111,19 @@ public class NavigationActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
-                        fragment = new addexpense();
+                        fragment = new Expenditure();
                         break;
+
                     case 1:
                         Log.i("TAG","2nd one");
+                        fragment = new addexpense();
+                        break;
+
+
+                    case 2:
 
                         fragment = new viewExpense();
                         break;
-//                    case 2:
-//                        ContactsFragment contactFragment = new ContactsFragment();
-//                        Bundle contactsArgs = new Bundle();
-//                        // Put observable int (That why ObservableInteger implements Serializable)
-//                        contactsArgs.putSerializable(ContactsFragment.PARAM, contactData);
-//                        contactFragment.setArguments(contactsArgs);
-//                        fragment = contactFragment;
-//                        break;
 //                    case 3:
 //                        fragment = new SettingsFragment();
 //                        break;
@@ -144,4 +151,46 @@ public class NavigationActivity extends AppCompatActivity {
         }
         return false;
     }
-}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.navigation_home:
+                logoutUser();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+   private void logoutUser(){
+
+               SharedPreferences sp=getSharedPreferences("UserInfo",MODE_PRIVATE);
+               sp.edit().clear().commit();
+
+               SharedPreferences.Editor editor=sp.edit();
+               editor.putBoolean("firstRun",false);
+               editor.commit();
+
+               finish();
+               Toast.makeText(NavigationActivity.this, "Successfully Logged Out", Toast.LENGTH_SHORT).show();
+               Intent intent=new Intent(NavigationActivity.this,loginpage.class);
+               startActivity(intent);
+
+
+           }
+
+   }
+
+
+

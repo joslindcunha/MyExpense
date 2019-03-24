@@ -18,9 +18,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_centerVertical="true"
+
+        android:layout_marginTop="150dp"
         app:cardBackgroundColor="#70ffffff">
 
 
@@ -30,6 +29,19 @@
         android:layout_height="wrap_content">
 
 
+        <TextView
+            android:id="@+id/Head"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/lavender"
+            android:text="ADD EXPENSE"
+             />
 
 
     <EditText
@@ -38,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/Head"
             android:clickable="true"
             android:editable="false"
             android:hint="Select Date" />
