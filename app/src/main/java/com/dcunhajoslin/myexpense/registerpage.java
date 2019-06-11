@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 public class registerpage extends AppCompatActivity {
 
     EditText name, contact, email, pass, confirm_pass, address;
-    CheckBox checkBox;
+    TextView checkBox;
     Button register;
     DBManager mydb;
 
@@ -72,9 +73,10 @@ public class registerpage extends AppCompatActivity {
                     confirm_pass.setError("Passwords do not match");
 
                 }
-                else if(!checkBox.isChecked()){
-                    Toast.makeText(registerpage.this,"You need to accept the policies to register",Toast.LENGTH_SHORT).show();
-                }
+
+//                else if(!checkBox.isChecked()){
+//                    Toast.makeText(registerpage.this,"You need to accept the policies to register",Toast.LENGTH_SHORT).show();
+//                }
                 else {
                     long i = mydb.insertContact(name.getText().toString(), contact.getText().toString(), email.getText().toString(), address.getText().toString(), pass.getText().toString());
                     Log.i("TAG", "inertcontact returned " + String.valueOf(i));
@@ -107,18 +109,18 @@ public class registerpage extends AppCompatActivity {
         });
 
 
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true) {
-                    register.setEnabled(true);
-
-                } else {
-                    register.setEnabled(false);
-                    Toast.makeText(registerpage.this, "Accept the policy", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked == true) {
+//                    register.setEnabled(true);
+//
+//                } else {
+//                    register.setEnabled(false);
+//                    Toast.makeText(registerpage.this, "Accept the policy", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     public boolean isStringcontains(String s) {

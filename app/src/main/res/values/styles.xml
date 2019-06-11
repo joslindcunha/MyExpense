@@ -20,6 +20,13 @@
         <item name="actionOverflowButtonStyle">@style/DotsDarkTheme</item>
     </style>
 
+    <style name="DatePickerDialog" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorAccent">@color/lavender</item>
+    </style>
+
     <style name="DotsDarkTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
         <item name="android:tint">@color/colorAccent</item>
     </style>

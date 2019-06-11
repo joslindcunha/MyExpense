@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class addexpense extends Fragment {
 
-    EditText name,type,amt,edittext;
+    EditText name,amt,edittext;
     Button button1;
     DBHelper dbHelper;
     DBManager mydb;
@@ -95,7 +95,7 @@ public class addexpense extends Fragment {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    new DatePickerDialog(getActivity(), date, myCalendar
+                    new DatePickerDialog(getActivity(),R.style.DatePickerDialog,date, myCalendar
                             .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                             myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 }
@@ -105,7 +105,20 @@ public class addexpense extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(edittext.getText().toString().equals("")){
+                    edittext.setError("Please enter date");
+                }
+                else if(name.getText().toString().equals("")){
+                    name.setError("Please enter expense name");
+
+                }
+                else if(amt.getText().toString().equals("")){
+                    amt.setError("Please enter amount");
+                }
+
+                else{
                 String date = null;
+
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     String day = "" + myCalendar.get(Calendar.YEAR);
@@ -124,7 +137,7 @@ public class addexpense extends Fragment {
 
 
                     startActivity(new Intent(getActivity(), NavigationActivity.class));
-                   // finish();
+                    // finish();
 
 
                 } else {
@@ -132,10 +145,10 @@ public class addexpense extends Fragment {
 
 
                     startActivity(new Intent(getActivity(), addexpense.class));
-                   // finish();
+                    // finish();
 
                 }
-
+            }
             }
         });
 
