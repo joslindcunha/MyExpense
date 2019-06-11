@@ -67,6 +67,18 @@ public class addexpense extends Fragment {
         }
 
         final EditText edittext = (EditText) v.findViewById(R.id.Birthday);
+        String date1 = null;
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            String day = "" + myCalendar.get(Calendar.YEAR);
+            String month = "" + (myCalendar.get(Calendar.MONTH) + 1);
+
+
+            String year = "" + myCalendar.get(Calendar.DAY_OF_MONTH);
+            date1 = day + "-" + month + "-" + year;
+            edittext.setText(date1);
+        }
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
 
@@ -103,20 +115,9 @@ public class addexpense extends Fragment {
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                if(edittext.getText().toString().equals("")){
-                    edittext.setError("Please enter date");
-                }
-                else if(name.getText().toString().equals("")){
-                    name.setError("Please enter expense name");
-
-                }
-                else if(amt.getText().toString().equals("")){
-                    amt.setError("Please enter amount");
-                }
-
-                else{
                 String date = null;
 
 
@@ -128,6 +129,20 @@ public class addexpense extends Fragment {
                     String year = "" + myCalendar.get(Calendar.DAY_OF_MONTH);
                     date = day + "-" + month + "-" + year;
                 }
+
+                if(date.equals("")){
+                    edittext.setError("Please enter date");
+                }
+                if(name.getText().toString().equals("")){
+                    name.setError("Please enter expense name");
+
+                }
+                else if(amt.getText().toString().equals("")){
+                    amt.setError("Please enter amount");
+                }
+
+                else{
+
                 // display the values by using a toast
 //                Toast.makeText(getApplicationContext(), day + "\n" + month + "\n" + year, Toast.LENGTH_LONG).show();
                 long i = mydb.insert_expense(date, name.getText().toString(), Long.parseLong(amt.getText().toString()));
